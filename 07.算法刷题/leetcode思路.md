@@ -2462,6 +2462,18 @@ var middleNode = function(head) {
 ```
 
 ```js
+// 思路一
+function sortedSquares(A) {
+  for (let i = 0, len = A.length; i <= len - 1; i++) {
+    A[i] *= A[i];
+  }
+  A.sort((a, b) => a - b);
+  return A;
+}
+```
+
+```js
+// 思路二
 var sortedSquares = function(A) {
     // return A.map(e => e * e).sort((a,b) => a-b); // 思路1
     let start = 0, end = A.length - 1;
