@@ -1,12 +1,11 @@
 # leetcode
 
-前300道题目（不包括困难级别题目）思路，仅供参考
-
 - [leetcode](#leetcode)
   - [面试题 02.01. 移除重复节点](#面试题-0201-移除重复节点)
   - [面试题 16.11. 跳水板](#面试题-1611-跳水板)
   - [剑指 Offer 22. 链表中倒数第k个节点](#剑指-offer-22-链表中倒数第k个节点)
   - [1. 两数之和](#1-两数之和)
+  - [2. 两数相加](#2-两数相加)
   - [3. 无重复字符的最长子串](#3-无重复字符的最长子串)
   - [5. 最长回文子串](#5-最长回文子串)
   - [6. Z字形变换](#6-z字形变换)
@@ -29,20 +28,28 @@
   - [31. 下一个排列](#31-下一个排列)
   - [33. 搜索旋转排序数组](#33-搜索旋转排序数组)
   - [35. 搜索插入位置](#35-搜索插入位置)
-  - [39. 组合](#39-组合)
-  - [40. 组合Ⅱ](#40-组合ⅱ)
+  - [39. 组合总和](#39-组合总和)
+  - [40. 组合总和Ⅱ](#40-组合总和ⅱ)
   - [53. 最大子序和](#53-最大子序和)
   - [58. 最后一个单词的长度](#58-最后一个单词的长度)
   - [61. 旋转链表](#61-旋转链表)
+  - [70. 爬楼梯](#70-爬楼梯)
+  - [75. 颜色分类](#75-颜色分类)
+  - [78. 子集](#78-子集)
   - [82. 删除排序链表中的重复元素 II](#82-删除排序链表中的重复元素-ii)
   - [83. 删除排序链表中的重复元素](#83-删除排序链表中的重复元素)
   - [94. 二叉树的中序遍历](#94-二叉树的中序遍历)
   - [107. 二叉树的层次遍历 II](#107-二叉树的层次遍历-ii)
   - [112. 路径总和](#112-路径总和)
+  - [116. 填充每个节点的下一个右侧节点指针](#116-填充每个节点的下一个右侧节点指针)
+  - [117. 填充每个节点的下一个右侧节点指针 II](#117-填充每个节点的下一个右侧节点指针-ii)
   - [121. 买卖股票的最佳时机](#121-买卖股票的最佳时机)
   - [122. 买卖股票的最佳时机 II](#122-买卖股票的最佳时机-ii)
   - [125. 验证回文串](#125-验证回文串)
   - [141. 环形链表](#141-环形链表)
+  - [142. 环形链表Ⅱ](#142-环形链表ⅱ)
+  - [143. 重排链表](#143-重排链表)
+  - [145. 二叉树的后序遍历](#145-二叉树的后序遍历)
   - [160. 相交链表](#160-相交链表)
   - [200. 岛屿数量](#200-岛屿数量)
   - [203. 移除链表元素](#203-移除链表元素)
@@ -51,11 +58,20 @@
   - [215. 数组中的第K个最大元素](#215-数组中的第k个最大元素)
   - [234. 回文链表](#234-回文链表)
   - [300. 最长上升子序列](#300-最长上升子序列)
+  - [344. 反转数组](#344-反转数组)
   - [347. 前 K 个高频元素](#347-前-k-个高频元素)
+  - [416. 分割等和子集](#416-分割等和子集)
   - [494. 目标和](#494-目标和)
+  - [518. 零钱兑换Ⅱ](#518-零钱兑换ⅱ)
+  - [530. 二叉搜索树的最小绝对差](#530-二叉搜索树的最小绝对差)
+  - [771. 宝石与石头](#771-宝石与石头)
+  - [844. 比较含退格的字符串](#844-比较含退格的字符串)
   - [876. 链表的中间结点](#876-链表的中间结点)
+  - [925. 长按键入](#925-长按键入)
+  - [977. 有序数组的平方](#977-有序数组的平方)
+  - [1002. 查找常用字符](#1002-查找常用字符)
 
-## 面试题 02.01. 移除重复节点
+## 面试题 02.01. [移除重复节点](https://leetcode-cn.com/problems/remove-duplicate-node-lcci/)
 
 ```txt
 双指针法，循环右指针即可
@@ -80,7 +96,7 @@ var removeDuplicateNodes = function(head) {
 };
 ```
 
-## 面试题 16.11. 跳水板
+## 面试题 16.11. [跳水板](https://leetcode-cn.com/problems/diving-board-lcci/)
 
 ```txt
 动态规划
@@ -100,7 +116,7 @@ var divingBoard = function(shorter, longer, k) {
 };
 ```
 
-## 剑指 Offer 22. 链表中倒数第k个节点
+## 剑指 Offer 22. [链表中倒数第k个节点](https://leetcode-cn.com/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof/)
 
 ```txt
 双指针法：右指针先走k-1步，然后左右指针一起走。
@@ -121,12 +137,35 @@ var getKthFromEnd = function(head, k) {
 };
 ```
 
-## 1. 两数之和
+## 1. [两数之和](https://leetcode-cn.com/problems/two-sum)
+
+- 两层循环
+
+```txt
+时间复杂度：O(N^2)
+空间复杂度：O(1)
+```
+
+```js
+var twoSum = function(nums, target) {
+    for(let i=0; i<nums.length; i++) {
+        let n1 = nums[i];
+        let n2 = target - n1;
+        let index = nums.indexOf(n2);
+        if (index !== i && index !== -1) {
+            return [i, index]
+        }
+    }
+};
+```
+
+- 哈希map
 
 ```txt
 map用来存储遍历时候的元素-索引对
 遍历一次列表，计算每个元素与target的差，判断一下map中存不存在这个键
 时间复杂度：O(N)
+空间复杂度：O(N)
 
 举例：
   nums = [2, 7, 11, 15]， target = 9
@@ -154,7 +193,38 @@ var twoSum = function(nums, target) {
 };
 ```
 
-## 3. 无重复字符的最长子串
+## 2. [两数相加](https://leetcode-cn.com/problems/add-two-numbers/)
+
+```txt
+同时循环两个链表，并用一个标志位来控制进位，模拟计算过程即可。
+
+时间复杂度：O(max{m, n})，m 和 n 分别表示两个链表的长度
+空间复杂度：O(max{m, n})
+```
+
+```js
+var addTwoNumbers = function(l1, l2) {
+    let p1 = l1, p2 = l2;
+    let pHead = new ListNode(-1);
+    let head = pHead;
+    let isAdd = 0;
+    while(p1 || p2) {
+        let n1 = p1 ? p1.val : 0;
+        let n2 = p2 ? p2.val : 0;
+        head.next = new ListNode((n1 + n2 + isAdd) % 10);
+        n1 + n2 + isAdd > 9 ? (isAdd = 1) : (isAdd = 0);
+        head = head.next;
+        if (p1) p1 = p1.next;
+        if (p2) p2 = p2.next;
+    }
+    if (isAdd === 1) {
+        head.next = new ListNode(1);
+    }
+    return pHead.next;
+};
+```
+
+## 3. [无重复字符的最长子串](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters)
 
 ```txt
 遍历一轮，res保存遍历到的不重复的字符串，maxLen记录最大的长度
@@ -182,7 +252,7 @@ var lengthOfLongestSubstring = function(s) {
 };
 ```
 
-## 5. 最长回文子串
+## 5. [最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring)
 
 - 动态规划
 
@@ -261,7 +331,7 @@ var longestPalindrome = function(s) {
 };
 ```
 
-## 6. Z字形变换
+## 6. [Z字形变换](https://leetcode-cn.com/problems/zigzag-conversion)
 
 ```txt
 这个Z字形变换的话相当于是有numRows行数据，要将字符串s中的每个字母依次从上往下再从下往上添加到这个numRows行中，
@@ -306,13 +376,13 @@ var convert = function(s, numRows) {
 };
 ```
 
-## 7. 整数反转
+## 7. [整数反转](https://leetcode-cn.com/problems/reverse-integer)
 
 ```txt
 原数x, 新数res。利用`int tmp = x % 10;` 。取个位，然后将其作为新数的最高位`res = res*10 + tmp;`，更新x：` x /= 10;`。重复上述操作，直到x = 0。此间不断判断是否溢出
 ```
 
-## 9. 回文数
+## 9. [回文数](https://leetcode-cn.com/problems/palindrome-number)
 
 ```txt
 进阶不将整数转换为字符串，思路：
@@ -352,7 +422,7 @@ var isPalindrome = function(x) {
 };
 ```
 
-## 11. 盛最多水的容器
+## 11. [盛最多水的容器](https://leetcode-cn.com/problems/container-with-most-water)
 
 ```txt
 用双指针法，left和right指针分别指向数组的头和尾，这个时候可以计算一下left和right对应区间可容纳的水:
@@ -379,7 +449,7 @@ var maxArea = function(height) {
 };
 ```
 
-## 12. 整数转罗马数字
+## 12. [整数转罗马数字](https://leetcode-cn.com/problems/integer-to-roman)
 
 ```txt
 简单粗暴，罗列出个十百千位的所有可能性：
@@ -391,11 +461,24 @@ var maxArea = function(height) {
 然后根据给的num，拿到个十百千位的罗马数字拼接起来
 ```
 
-## 13. 罗马数字转整数
+```js
+var intToRoman = function(num) {
+  const qian = ['', 'M', 'MM', 'MMM'];
+  const bai = ['','C','CC','CCC','CD','D','DC','DCC','DCCC','CM'];
+  const shi = ['','X','XX','XXX','XL','L','LX','LXX','LXXX','XC'];
+  const ge = ['','I','II','III','IV','V','VI','VII','VIII','IX']
+  return (qian[parseInt(num/1000)]
+    +bai[parseInt(num/100)%10]
+    +shi[parseInt(num/10)%10]
+    +ge[num%10])
+};
+```
+
+## 13. [罗马数字转整数](https://leetcode-cn.com/problems/roman-to-integer)
 
 将所有可能的情况保存在一个对象中：
 
-```js
+```txt
 map = {
   'I' : 1,
   'IV': 4,
@@ -411,12 +494,45 @@ map = {
   'CM': 900,
   'M' : 1000,
 };
-```
 
 然后对给定的罗马字符进行遍历，每次需要判断一下：
 连续两个字符在对象是否存在，存在就用这连续两个字符的值；不存在就用当前遍历的字符的值
+```
 
-## 14. 最长公共前缀
+```js
+var romanToInt = function(s) {
+    var map = {
+        'I': 1,
+        'IV': 4,
+        'V': 5,
+        'IX': 9,
+        'X': 10,
+        'XL': 40,
+        'L': 50,
+        'XC': 90,
+        'C': 100,
+        'CD': 400,
+        'D': 500,
+        'CM': 900,
+        'M': 1000
+        };
+    var i = 0;
+    var ans = 0;
+    while(i < s.length){
+        let str = s.slice(i, i+2);
+        if(map[str]){
+           ans += map[str];
+           i += 2;
+        }else{
+            ans += map[s[i]];
+            i += 1;
+        }
+    }
+    return ans;
+};
+```
+
+## 14. [最长公共前缀](https://leetcode-cn.com/problems/longest-common-prefix)
 
 ```js
 /**
@@ -455,7 +571,7 @@ first = "flower"
 遍历结束，公共前缀就是first
 ```
 
-## 15. 三数之和
+## 15. [三数之和](https://leetcode-cn.com/problems/3sum)
 
 ```js
 /**
@@ -497,7 +613,7 @@ var threeSum = function(nums) {
 时间复杂度：O(n^2)
 ```
 
-## 16. 最接近的三数之和
+## 16. [最接近的三数之和](https://leetcode-cn.com/problems/3sum-closest)
 
 ```txt
 思路一：复杂度O(N^3)
@@ -552,7 +668,7 @@ var threeSumClosest = function(nums, target) {
 };
 ```
 
-## 17. 电话号码的字母组合
+## 17. [电话号码的字母组合](https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number)
 
 ```txt
 首先用一个对象保存所有可能的情况
@@ -602,44 +718,34 @@ var letterCombinations = function(digits) {
 };
 ```
 
-## 19. 删除链表的倒数第N个节点
+## 19. [删除链表的倒数第N个节点](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list)
 
 ```txt
-首先先设置一个辅助头结点，让辅助头结点指向给定的head链表，然后用快慢指针low和fast，初始都指向辅助头结点
-先让fast指针走n步，然后fast和low指针同时走，当fast指针走到最后的时候，这个时候的low指针的下一个结点就是我们要删除的。
+首先先设置一个辅助头结点 post，让辅助头结点指向给定的 head 链表，然后用双指针 left 和 right ，初始都指向辅助头结点
+先让 right 指针走n步，然后 right 和 left 指针同时走，当 right 指针走到最后的时候，这个时候的 left 指针的下一个结点就是我们要删除的。
+
+时间复杂度：O(N)，N是链表的长度
+空间复杂度：O(1)
 ```
 
 ```js
-/**
- * Definition for singly-linked list.
- * function ListNode(val) {
- *     this.val = val;
- *     this.next = null;
- * }
- */
-/**
- * @param {ListNode} head
- * @param {number} n
- * @return {ListNode}
- */
 var removeNthFromEnd = function(head, n) {
-  var pHead = new ListNode(-1); // 辅助头结点
-  pHead.next = head;
-  var cur = pHead;
-  var pre = pHead;
-  for(let i=0;i<n;i++){
-    cur=cur.next;
-  }
-  while(cur && cur.next){
-    pre = pre.next;
-    cur = cur.next;
-  }
-  pre.next = pre.next.next;
-  return pHead.next;
+    let post = new ListNode(-1);
+    post.next = head;
+    let left = post, right=post;
+    for(let i=0; i<n; i++) {
+        right = right.next
+    }
+    while(right && right.next) {
+        left = left.next;
+        right = right.next;
+    }
+    left.next = left.next.next;
+    return post.next;
 };
 ```
 
-## 20. 有效的括号
+## 20. [有效的括号](https://leetcode-cn.com/problems/valid-parentheses)
 
 ```txt
 字符串的长度为奇数肯定是false
@@ -675,7 +781,7 @@ var isValid = function(s) {
 };
 ```
 
-## 21. 合并两个有序链表
+## 21. [合并两个有序链表](https://leetcode-cn.com/problems/merge-two-sorted-lists)
 
 ```txt
 创建一个辅助头节点head，用指针p指向head，
@@ -723,7 +829,7 @@ var mergeTwoLists = function(l1, l2) {
 };
 ```
 
-## 24. 两两交换链表中的节点
+## 24. [两两交换链表中的节点](https://leetcode-cn.com/problems/swap-nodes-in-pairs)
 
 ```txt
 构建一个哨兵节点0，例如：1->2->3->4
@@ -751,7 +857,7 @@ var swapPairs = function(head) {
 };
 ```
 
-## 26. 删除排序数组中的重复项
+## 26. [删除排序数组中的重复项](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array)
 
 ```txt
 倒序遍历数组，判断一下当前元素与下一个元素是否相同，如果相同就删除当前元素，遍历结束返回数组的长度
@@ -772,7 +878,7 @@ var removeDuplicates = function(nums) {
 };
 ```
 
-## 27. 移除元素
+## 27. [移除元素](https://leetcode-cn.com/problems/remove-element)
 
 ```txt
 思路1：
@@ -810,7 +916,7 @@ var removeElement = function(nums, val) {
 };
 ```
 
-## 28. 实现 strStr()
+## 28. [实现 strStr()](https://leetcode-cn.com/problems/implement-strstr)
 
 ```txt
 直接调用indexOf()方法就好了
@@ -823,7 +929,7 @@ var strStr = function(haystack, needle) {
 };
 ```
 
-## 31. 下一个排列
+## 31. [下一个排列](https://leetcode-cn.com/problems/next-permutation)
 
 ```txt
 1.从数组的末尾寻找第一对升序排列的值i,j
@@ -876,7 +982,7 @@ var nextPermutation = function(nums) {
 }
 ```
 
-## 33. 搜索旋转排序数组
+## 33. [搜索旋转排序数组](https://leetcode-cn.com/problems/search-in-rotated-sorted-array)
 
 ```txt
 二分法：
@@ -917,7 +1023,7 @@ var search = function(nums, target) {
 };
 ```
 
-## 35. 搜索插入位置
+## 35. [搜索插入位置](https://leetcode-cn.com/problems/search-insert-position)
 
 ```txt
 思路1：
@@ -959,7 +1065,7 @@ var searchInsert = function(nums, target) {
 };
 ```
 
-## 39. 组合
+## 39. [组合总和](https://leetcode-cn.com/problems/combination-sum)
 
 - 回溯
 
@@ -982,7 +1088,7 @@ var combinationSum = function(candidates, target) {
 };
 ```
 
-## 40. 组合Ⅱ
+## 40. [组合总和Ⅱ](https://leetcode-cn.com/problems/combination-sum-ii)
 
 - 回溯+减枝
 
@@ -1008,11 +1114,17 @@ var combinationSum2 = function (candidates, target) {
 };
 ```
 
-## 53. 最大子序和
+## 53. [最大子序和](https://leetcode-cn.com/problems/maximum-subarray)
 
 ```txt
-遍历一次，从第一个大于0的数开始，求和并且每一步更新和的最大值，求和过程中如果小于0，则抛弃这个，从后续大于0的数继续。
+方法1：遍历一次，从第一个大于0的数开始，求和并且每一步更新和的最大值，求和过程中如果小于0，则抛弃这个，从后续大于0的数继续。
+
+方法2：动态规划，dp[i] 定义为以 nums[i] 结尾的最大子数组的和，状态转移方程：
+        dp[i] = max{ dp[i-1] + nums[i], nums[i] }     表示要么自成一派，要么和前面的子数组合并
+连续子数组的最大和一定是 dp 数组的最大值
 ```
+
+- 方法1
 
 ```js
 var maxSubArray = function(nums) {
@@ -1030,7 +1142,21 @@ var maxSubArray = function(nums) {
 };
 ```
 
-## 58. 最后一个单词的长度
+- 方法2
+
+```js
+var maxSubArray = function (nums) {
+    let len = nums.length;
+    let dp = [];
+    dp[0] = nums[0];
+    for (let i = 1; i < len; i++) {
+        dp[i] = Math.max(dp[i - 1] + nums[i], nums[i]);
+    }
+    return Math.max(...dp);
+};
+```
+
+## 58. [最后一个单词的长度](https://leetcode-cn.com/problems/length-of-last-word)
 
 ```txt
 太简单了，去除一下首尾的空格，然后分割一下去最后一个的长度
@@ -1043,7 +1169,7 @@ var lengthOfLastWord = function(s) {
 };
 ```
 
-## 61. 旋转链表
+## 61. [旋转链表](https://leetcode-cn.com/problems/rotate-list)
 
 ```txt
 思路1:
@@ -1107,6 +1233,150 @@ var rotateRight = function(head, k) {
 };
 ```
 
+## 70. [爬楼梯](https://leetcode-cn.com/problems/climbing-stairs)
+
+```txt
+典型动态规划
+dp[i] = dp[i-1] + dp[i-2]
+
+时间复杂度：O(N)
+空间复杂度：O(1)
+```
+
+```js
+var climbStairs = function (n) {
+    let a = 0, b = 0, res = 1;
+    for (let i = 1; i <= n; i++) {
+        a = b;
+        b = res;
+        res = a + b;
+    }
+    return res;
+};
+```
+
+## 75. [颜色分类](https://leetcode-cn.com/problems/sort-colors)
+
+- 单指针
+
+```txt
+遍历两次，一次将所有的 0 换到最前面，一次将所有的 1 换到中间
+
+时间复杂度：O(N)
+空间复杂度：O(1)
+```
+
+```js
+var sortColors = function (nums) {
+    let ptr = 0;
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] === 0) {
+            [nums[i], nums[ptr]] = [nums[ptr], nums[i]]
+            ptr++;
+        }
+    }
+    for (let i = ptr; i < nums.length; i++) {
+        if (nums[i] === 1) {
+            [nums[i], nums[ptr]] = [nums[ptr], nums[i]]
+            ptr++;
+        }
+    }
+    return nums;
+};
+```
+
+- 双指针
+
+```txt
+这里用两个指针 p 和 q ，遍历数组：
+当为 1 的时候就与 q 指针对应的数交换并把 q 指针后移一位，
+当为 0 的时候就与 p 指针对应的数交换，这里首先要判断一下 p 指针是不是在 q 指针的前面，如果是，需要把当前的数再与 q 指针交换一下，然后再把两个都后移一位
+因为当遍历到 0 的时候，可能这个时候p 指针对应的数可能是 1，然后与 p 指针交换之后当前遍历的位置就变成了 1，如果这个时候循环结束的话是有问题的，因为 1 是要放在中间的
+
+时间复杂度：O(N)
+空间复杂度：O(1)
+```
+
+```js
+var sortColors = function (nums) {
+    let n = nums.length;
+    let [p, q] = [0, 0];
+    for(let i=0; i<n; i++) {
+        if (nums[i] === 0) {
+            [nums[i], nums[p]] = [nums[p], nums[i]];
+            if (p < q) {
+                [nums[i], nums[q]] = [nums[q], nums[i]];
+            }
+            p++;
+            q++;
+        } else if (nums[i] === 1) {
+            [nums[i], nums[q]] = [nums[q], nums[i]];
+            q++;
+        }
+    }
+    return nums;
+};
+```
+
+## 78. [子集](https://leetcode-cn.com/problems/subsets)
+
+- 方法一：迭代法实现子集枚举
+
+```txt
+[1,3,5]的子集，每个数字有两种可能，选或不选，我们可以用二进制数 1 和 0 来表示选或不选
+所以[1,3,5]的子集就可以表示成 000 - 111 之间所有的可能，000表示都不选，即空集[]，111表示都选，即[1,3,5]
+三位数字每一位表示数组里对应位的元素选还是不选
+
+时间复杂度：O(N*2^N)
+空间复杂度：O(N)
+```
+
+```js
+var subsets = function (nums) {
+    let res = [];
+    const n = nums.length;
+    for (let i = 0; i < (1 << n); i++) { // 1 << n 表示的意思就是 2 ^ n
+        let tmp = [];
+        for (let j = 0; j < n; j++) { // 遍历n个二进制数字，找到为1的对应的数组中的元素，将其添加到临时数组中
+            if (i & (1 << j)) {
+                tmp.push(nums[j]);
+            }
+        }
+        res.push(tmp)
+    }
+    return res
+};
+```
+
+- 方法二：递归法实现子集枚举
+
+```txt
+dfs深度优先遍历
+
+时间复杂度：O(N*2^N)
+空间复杂度：O(N)
+```
+
+```js
+var subsets = function (nums) {
+    const res = [];
+    const tmp = [];
+    const n = nums.length;
+    let dfs = cur => {
+        if (cur === n) {
+            res.push(tmp.slice());
+            return;
+        }
+        tmp.push(nums[cur]);
+        dfs(cur + 1);
+        tmp.pop(nums[cur]);
+        dfs(cur + 1);
+    }
+    dfs(0);
+    return res;
+};
+```
+
 ## 82. 删除排序链表中的重复元素 II
 
 ```txt
@@ -1138,7 +1408,7 @@ var deleteDuplicates = function(head) {
 };
 ```
 
-## 83. 删除排序链表中的重复元素
+## 83. [删除排序链表中的重复元素](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list)
 
 ```txt
 直接法，简单
@@ -1158,7 +1428,7 @@ var deleteDuplicates = function(head) {
 };
 ```
 
-## 94. 二叉树的中序遍历
+## 94. [二叉树的中序遍历](https://leetcode-cn.com/problems/binary-tree-inorder-traversal)
 
 - 递归
 
@@ -1196,7 +1466,7 @@ var inorderTraversal = function (root) {
 };
 ```
 
-## 107. 二叉树的层次遍历 II
+## 107. [二叉树的层次遍历 II](https://leetcode-cn.com/problems/binary-tree-level-order-traversal-ii)
 
 > 借助栈的结构，依次把每层的结点放入栈中，再弹出
 
@@ -1221,7 +1491,7 @@ var levelOrderBottom = function(root) {
 };
 ```
 
-## 112. 路径总和
+## 112. [路径总和](https://leetcode-cn.com/problems/path-sum)
 
 ```txt
 递归
@@ -1243,7 +1513,102 @@ var hasPathSum = function(root, sum) {
 };
 ```
 
-## 121. 买卖股票的最佳时机
+## 116. [填充每个节点的下一个右侧节点指针](https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/)
+
+- 层序遍历
+
+```txt
+层序遍历，然后每一层遍历的时候，让前一个指向后一个
+
+时间复杂度：O(N)
+空间复杂度：O(N)
+```
+
+```js
+var connect = function(root) {
+    if (!root) return null;
+    let stack = [root];
+    while(stack.length) {
+        let len = stack.length;
+        let pre = -1;
+        for(let i=0; i<len; i++) {
+            let node = stack.shift();
+            node.left && stack.push(node.left)
+            node.right && stack.push(node.right)
+            if (pre !== -1) {
+                pre.next = node;
+                pre = node;
+            } else {
+                pre = node;
+            }
+        }
+    }
+    return root
+};
+```
+
+- 使用已建立的 next 指针
+
+```txt
+完美二叉树只有两种情况：
+（1）某节点的左子节点 -> 某节点的右子节点
+（2）某节点的右子节点 -> 某节点 next 指针对应节点的左子节点
+
+时间复杂度：O(N)
+空间复杂度：O(1)
+```
+
+```js
+var connect = function(root) {
+    if (!root) return null;
+    let head = root;
+    while(head.left) {
+        let node = head;
+        while(node) {
+            // node的左子节点 -> node的右子节点
+            node.left.next = node.right;
+
+            // node的右子节点 -> node.next的左子节点
+            if (node.next) {
+                node.right.next = node.next.left;
+            }
+
+            node = node.next;
+        }
+        head = head.left
+    }
+    return root
+}
+```
+
+## 117. [填充每个节点的下一个右侧节点指针 II](https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node-ii)
+
+```txt
+层序遍历，然后每一层遍历的时候，让前一个指向后一个
+```
+
+```js
+var connect = function (root) {
+    if (!root) return null
+    let queue = [root]
+    while (queue.length) {
+        const len = queue.length
+        let last = null
+        for (let i = 0; i < len; i++) {
+            let node = queue.shift()
+            node.left && queue.push(node.left)
+            node.right && queue.push(node.right)
+            if (i !== 0) {
+                last.next = node;
+            }
+            last = node;
+        }
+    }
+    return root
+};
+```
+
+## 121. [买卖股票的最佳时机](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock)
 
 - 动态规划
 
@@ -1299,7 +1664,7 @@ var maxProfit = function(prices) {
 };
 ```
 
-## 122. 买卖股票的最佳时机 II
+## 122. [买卖股票的最佳时机 II](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii)
 
 ```txt
 用一个二维数组的动态方程
@@ -1326,7 +1691,7 @@ var maxProfit = function(prices) {
 };
 ```
 
-## 125. 验证回文串
+## 125. [验证回文串](https://leetcode-cn.com/problems/valid-palindrome)
 
 ```txt
 思路1:
@@ -1359,14 +1724,18 @@ var isPalindrome = function(s) {
 };
 ```
 
-## 141. 环形链表
+## 141. [环形链表](https://leetcode-cn.com/problems/linked-list-cycle)
 
 ```txt
 思路1:
 用一个列表去存储每次遍历的节点，只需要在每次遍历的时候判断一下当前节点是否已经存在即可
+时间复杂度：O(N)
+空间复杂度：O(N)
 
 思路2:
 快慢指针，只要链表存在环，那么快慢指针总会相遇。
+时间复杂度：O(N)
+空间复杂度：O(1)
 ```
 
 ```js
@@ -1401,7 +1770,104 @@ var hasCycle = function(head) {
 };
 ```
 
-## 160. 相交链表
+## 142. [环形链表Ⅱ](https://leetcode-cn.com/problems/linked-list-cycle-ii)
+
+```txt
+快慢指针先找到两个指针相遇的地方，然后在让一个指针ptr指向head，ptr和slow（相遇的点）同时出发，会在环的入口处相遇。
+```
+
+```js
+var detectCycle = function(head) {
+    let slow = head, fast = head;
+    if (!head || !head.next) return null;
+    while(fast && fast.next) {
+        fast = fast.next.next;
+        slow = slow.next;
+        if (slow === fast) break;
+    }
+    if(slow !== fast) return null;
+    while(head !== slow) {
+        head = head.next;
+        slow = slow.next;
+    }
+    return head;
+};
+```
+
+## 143. [重排链表](https://leetcode-cn.com/problems/reorder-list/)
+
+```txt
+将链表每个节点存放数组中，再双指针遍历数组
+
+时间复杂度：O(N)，N为链表的长度
+空间复杂度：O(N)
+```
+
+```js
+var reorderList = function(head) {
+    let nodes = [];
+    while (head) {
+        nodes.push(head);
+        head = head.next;
+    }
+    let phead = new ListNode(-1);
+    let res = phead;
+    let [l, r] = [0, nodes.length - 1];
+    while(l < r) {
+        phead.next = nodes[l];
+        phead.next.next = nodes[r];
+        l++;
+        r--;
+        phead = phead.next.next;
+    }
+    if (l===r) {
+        phead.next = nodes[l];
+        phead.next.next = null;
+    } else {
+        phead.next = null;
+    }
+    return res.next;
+};
+```
+
+## 145. [二叉树的后序遍历](https://leetcode-cn.com/problems/binary-tree-postorder-traversal)
+
+- 递归
+
+```js
+var postorderTraversal = function(root) {
+    let res = [];
+    let postMid = root => {
+        if (!root) return null;
+        postMid(root.left)
+        postMid(root.right)
+        res.push(root.val)
+    }
+    postMid(root)
+    return res
+};
+```
+
+- 迭代算法
+
+> 借助栈
+
+```js
+var postorderTraversal = function(root) {
+    if (!root) return []
+    let res = [];
+    let stack = [root];
+    while(stack.length) {
+        let node = stack.pop();
+        res.unshift(node.val);
+        node.left && stack.push(node.left)
+        node.right && stack.push(node.right)
+    }
+    return res
+};
+```
+
+## 160. [相交链表](https://leetcode-cn.com/problems/intersection-of-two-linked-lists)
 
 ```txt
 相交链表 headA headB，同时遍历这两个链表，当headA遍历完了遍历headB，当headB遍历完了遍历headA
@@ -1428,7 +1894,7 @@ var getIntersectionNode = function(headA, headB) {
 };
 ```
 
-## 200. 岛屿数量
+## 200. [岛屿数量](https://leetcode-cn.com/problems/number-of-islands)
 
 ```txt
 深度优先遍历，找到一个为1（陆地）的，count++，同时将其上下左右的陆地都变成0（湖泊）
@@ -1461,7 +1927,7 @@ function dfs(grid, i, j, rows, cols) {
 }
 ```
 
-## 203. 移除链表元素
+## 203. [移除链表元素](https://leetcode-cn.com/problems/remove-linked-list-elements)
 
 ```txt
 哨兵节点 + 双指针法
@@ -1486,7 +1952,7 @@ var removeElements = function(head, val) {
 };
 ```
 
-## 206. 反转链表
+## 206. [反转链表](https://leetcode-cn.com/problems/reverse-linked-list)
 
 ```txt
 思路1: 用一个数组存储链表的val
@@ -1538,7 +2004,7 @@ var reverseList = function(head) {
 };
 ```
 
-## 209. 长度最小的子数组
+## 209. [长度最小的子数组](https://leetcode-cn.com/problems/minimum-size-subarray-sum)
 
 ```txt
 滑动窗口法，时间复杂度O(N)，空间复杂度O(1)
@@ -1563,7 +2029,7 @@ var minSubArrayLen = function(s, nums) {
 };
 ```
 
-## 215. 数组中的第K个最大元素
+## 215. [数组中的第K个最大元素](https://leetcode-cn.com/problems/kth-largest-element-in-an-array)
 
 ```txt
 TopK问题：
@@ -1693,7 +2159,7 @@ let partition = (arr, left, right) => {
 }
 ```
 
-## 234. 回文链表
+## 234. [回文链表](https://leetcode-cn.com/problems/palindrome-linked-list)
 
 ```txt
 思路1：
@@ -1747,7 +2213,7 @@ var isPalindrome = function(head) {
 };
 ```
 
-## 300. 最长上升子序列
+## 300. [最长上升子序列](https://leetcode-cn.com/problems/longest-increasing-subsequence)
 
 - 动态规划
 
@@ -1775,7 +2241,28 @@ var lengthOfLIS = function (nums) {
 };
 ```
 
-## 347. 前 K 个高频元素
+## 344. [反转数组](https://leetcode-cn.com/problems/reverse-string)
+
+> 要求不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用 O(1) 的额外空间解决这一问题。
+
+```txt
+时间复杂度：O(N)
+空间复杂度：O(1)
+```
+
+```js
+var reverseString = function (s) {
+    let [l, r] = [0, s.length - 1];
+    for (let i = 0; i < s.length >> 1; i++) {
+        [s[l], s[r]] = [s[r], s[l]];
+        l++;
+        r--;
+    }
+    return s;
+};
+```
+
+## 347. [前 K 个高频元素](https://leetcode-cn.com/problems/top-k-frequent-elements)
 
 ```js
 /**
@@ -1822,7 +2309,53 @@ var topKFrequent = function (nums, k) {
 };
 ```
 
-## 494. 目标和
+## 416. [分割等和子集](https://leetcode-cn.com/problems/partition-equal-subset-sum)
+
+[一个比较好的解释](https://labuladong.gitbook.io/algo/dong-tai-gui-hua-xi-lie/bei-bao-zi-ji)
+
+```txt
+换句话描述就是能否找到一个组合的和等于 nums 的和的一半，也就转换成了 0-1 背包问题
+套用动态规划模板来求解
+
+因为有两个状态，【背包的容量】和【可选择的物品】，所以 dp 是一个二维数组
+
+dp定义为：
+dp[n][sum] 表示前 n 个数中能否找到一个和为 sum 的组合
+
+状态转移方程：
+dp[i][j] = dp[i - 1][j - nums[i - 1]] || dp[i - 1][j]
+意思是第i个数有两种选择：选或不选，不选就是继承之前的结果，选了就是判断在装第 i 个数之前是否有一种组合的和为 j - num[i - 1]，很好理解
+
+再处理一下边界问题，
+
+时间复杂度：O(n * sum)，其中 n 为 nums 的长度，sum 为 nums 数组和的一半。
+空间复杂度：O(n * sum)
+```
+
+```js
+var canPartition = function (nums) {
+    let sum = nums.reduce((t, v) => t + v);
+    if (sum % 2 !== 0) return false;
+    sum = sum / 2;
+    let len = nums.length;
+    let dp = Array(len + 1).fill('').map(e => Array(sum + 1).fill(false))
+    for (let i = 0; i <= len; i++) {
+        dp[i][0] = true
+    }
+    for (let i = 1; i <= len; i++) {
+        for (let j = 1; j <= sum; j++) {
+            if (j - nums[i - 1] < 0) {
+                dp[i][j] = dp[i - 1][j]
+            } else {
+                dp[i][j] = dp[i - 1][j] || dp[i - 1][j - nums[i - 1]]
+            }
+        }
+    }
+    return dp[len][sum]
+};
+```
+
+## 494. [目标和](https://leetcode-cn.com/problems/target-sum)
 
 - 回溯法
 
@@ -1850,14 +2383,136 @@ var findTargetSumWays = function(nums, S) {
 };
 ```
 
-## 876. 链表的中间结点
+## 518. [零钱兑换Ⅱ](https://leetcode-cn.com/problems/coin-change-2)
+
+[参考一个比较清晰的解读](https://labuladong.gitbook.io/algo/dong-tai-gui-hua-xi-lie/bei-bao-ling-qian)
+
+```txt
+时间复杂度：O(n * amount)，其中 n 是 coins 的长度，amount 表示面额
+空间复杂度：O(n * amount)
+```
+
+```js
+var change = function(amount, coins) {
+    let n = coins.length;
+    let dp = Array(n + 1).fill(0).map(e => Array(amount + 1).fill(0));
+    for(let i=0; i<=n; i++) {
+        dp[i][0] = 1;
+    }
+    for(let i=1; i<=n; i++) {
+        for(let j=1; j<=amount; j++) {
+            if (j - coins[i-1] >= 0) {
+                dp[i][j] = dp[i-1][j] + dp[i][j-coins[i-1]];
+            } else {
+                dp[i][j] = dp[i-1][j];
+            }
+        }
+    }
+    return dp[n][amount]
+};
+```
+
+## 530. [二叉搜索树的最小绝对差](https://leetcode-cn.com/problems/minimum-absolute-difference-in-bst/)
+
+与[leetcode783](https://leetcode-cn.com/problems/minimum-distance-between-bst-nodes/)相似
+
+```txt
+中序遍历 再取中序遍历的结果相邻的数之差的最小值
+
+时间复杂度：O(N)
+空间复杂度：O(N)，递归函数的空间复杂度取决于递归的栈深度，而栈深度在二叉搜索树为一条链的情况下会达到 O(N) 级别。
+```
+
+```js
+var getMinimumDifference = function(root) {
+    let min = Infinity, pre = -1;
+    let mid = root => {
+        if (!root) return;
+        mid(root.left);
+        if (pre !== -1) {
+            min = Math.min(min, root.val - pre);
+        }
+        pre = root.val;
+        mid(root.right);
+    }
+    mid(root);
+    return min
+};
+```
+
+## 771. [宝石与石头](https://leetcode-cn.com/problems/jewels-and-stones)
+
+- 暴力循环
+  
+```txt
+时间复杂度：O(mn)，其中 m 是字符串 J 的长度，n 是字符串 S 的长度。遍历字符串 S 的时间复杂度是 O(n)，对于 S 中的每个字符，需要遍历字符串 J 判断是否是宝石，时间复杂度是 O(m)，因此总时间复杂度是 O(mn)。
+空间复杂度：O(1)，只需要维护常量的额外空间。
+```
+
+```js
+var numJewelsInStones = function(J, S) {
+    let res = 0;
+    for(let i=0; i<S.length; i++) {
+        let tmp = S[i];
+        if (J.indexOf(tmp) !== -1) res++;
+    }
+    return res;
+};
+```
+
+- 哈希集合
+
+```txt
+时间复杂度：O(m+n)，其中 m 是字符串 J 的长度，n 是字符串 S 的长度。遍历字符串 J 将其中的字符存储到哈希集合中，时间复杂度是 O(m)，然后遍历字符串 S，对于 S 中的每个字符在 O(1) 的时间内判断当前字符是否是宝石，时间复杂度是 O(n)，因此总时间复杂度是 O(m+n)。
+空间复杂度：O(m)，其中 m 是字符串 J 的长度。使用哈希集合存储字符串 J 中的字符。
+```
+
+```js
+var numJewelsInStones = function(J, S) {
+    let set = new Set(J.split(''));
+    return S.split('').reduce((pre, cur) => {
+        return pre + set.has(cur);
+    }, 0)
+};
+```
+
+## 844. [比较含退格的字符串](https://leetcode-cn.com/problems/backspace-string-compare/)
+
+```txt
+借助正则，将字母（单个）和 '#' 相连的直接截去，最后再判断一下有没有多余的 '#' ，截去即可。
+
+时间复杂度：O(m + n)， m, n 分别是两个字符串的长度
+空间复杂度：O(1)
+```
+
+```js
+var backspaceCompare = function (S, T) {
+    while(S.length !== S.replace(/[a-z][#]/g, "").length) {
+        S = S.replace(/[a-z][#]/g, "");
+    }
+    S = S.replace(/[#]*/g, '');
+    while(T.length !== T.replace(/[a-z][#]/g, "").length) {
+        T = T.replace(/[a-z][#]/g, "");
+    }
+    T = T.replace(/[#]*/g, '');
+    return S === T
+};
+```
+
+## 876. [链表的中间结点](https://leetcode-cn.com/problems/middle-of-the-linked-list)
 
 ```txt
 思路1:
 两次遍历，第一次遍历获取单链表的长度，第二次只要遍历到中间即可。
 
+时间复杂度：O(N)，N 是链表的长度
+空间复杂度：O(1)
+
 思路2:
 一次遍历：快慢指针，慢指针一次走一步，快指针一次走两步。
+
+时间复杂度：O(N)，N 是链表的长度
+空间复杂度：O(1)
 ```
 
 ```js
@@ -1885,5 +2540,86 @@ var middleNode = function(head) {
         fast = fast.next.next;
     }
     return slow;
+};
+```
+
+## 925. [长按键入](https://leetcode-cn.com/problems/long-pressed-name/)
+
+```txt
+用两个指针，一个指向 name 的头部，另一个指向 typed 的头部，遍历无非就两种情况：
+（1）name[i] = typed[j] ， 这个时候只要让两个指针同时后移一位，i++; j++;
+（2）typed[j] = typed[j-1] ， 这个时候说明是键盘长按，只要让 j 指针后移一位，j++;
+
+不满这两种情况说明都不符合要求
+
+时间复杂度：O(M + N)，
+空间复杂度：O(1)
+```
+
+```js
+var isLongPressedName = function (name, typed) {
+    let i = 0, j = 0;
+    while(i < name.length || j < typed.length) {
+        if (name[i] === typed[j]) {
+            i++;
+            j++;
+        } else if (typed[j] === typed[j-1]) {
+            j++;
+        } else return false;
+    }
+    return true;
+};
+```
+
+## 977. [有序数组的平方](https://leetcode-cn.com/problems/squares-of-a-sorted-array/)
+
+```txt
+两种思路：
+    1. 平方后再对数组排序，时间复杂度：O(NlogN)，空间复杂度：O(logN)
+    2. 双指针，start 和 end 头尾指针，向中间缩进，时间复杂度：O(N)，空间复杂度：O(N)
+```
+
+```js
+var sortedSquares = function(A) {
+    // return A.map(e => e * e).sort((a,b) => a-b); // 思路1
+    let start = 0, end = A.length - 1;
+    let res = [];
+    while(start <= end) {
+        if (Math.abs(A[start]) >= Math.max(A[end])) {
+            res.unshift(A[start] * A[start]);
+            start++;
+        } else {
+            res.unshift(A[end] * A[end]);
+            end--;
+        }
+    }
+    return res;
+};
+```
+
+## 1002. [查找常用字符](https://leetcode-cn.com/problems/find-common-characters/)
+
+```txt
+我的思路就是其实就是把 A 中的字符求交集
+```
+
+```js
+var commonChars = function(A) {
+    let cross = (a, b) => {
+        let res = [];
+        for(let s of a) {
+            if (b.indexOf(s) !== -1) {
+                res.push(s);
+                b.splice(b.indexOf(s), 1);
+            }
+        }
+        return res;
+    }
+    let res = A.pop().split('');
+    while(A.length) {
+        let a = A.pop().split('');
+        res = cross(res, a);
+    }
+    return res;
 };
 ```
