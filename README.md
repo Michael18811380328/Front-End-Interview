@@ -10,10 +10,14 @@
 
 ## 注意
 
-GitHub 由于服务器原因，图片可能显示不了，如需要显示图片，如下两种方法：
+1.GitHub 由于服务器原因，图片可能显示不了，如需要显示图片，如下两种方法：
 
 - clone 项目到本地
 - 搭梯子（VPN）
+
+2.文档存在一些公式的说明，GitHub 若要支持 mathjax 公式，请安装一下 Chrome 插件来辅助显示：
+
+[MathJax Plugin for Github](https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima/related?hl=zh-CN)
 
 ---
 
@@ -43,9 +47,9 @@ GitHub 由于服务器原因，图片可能显示不了，如需要显示图片�
 
 ## 友情链接，欢迎交流
 
-|博客园|Gitee链接|牛客链接|个人博客|微信 |QQ|
-|---|---|---|---|---|---|
-|[博客园](https://www.cnblogs.com/muzidaitou)|[Gitee链接](https://gitee.com/lee_van)|[牛客链接](https://www.nowcoder.com/profile/549508843)|[个人博客](https://lf2021.github.io/)|[微信](./images/vx.jpg)|[QQ](./images/qq.jpg)|
+|博客园|Gitee链接|牛客链接|个人博客|
+|---|---|---|---|
+|[博客园](https://www.cnblogs.com/muzidaitou)|[Gitee链接](https://gitee.com/lee_van)|[牛客链接](https://www.nowcoder.com/profile/549508843)|[个人博客](https://lf2021.github.io/)|
 
 ---
 
